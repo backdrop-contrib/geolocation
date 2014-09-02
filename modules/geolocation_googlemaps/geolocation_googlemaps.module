@@ -387,7 +387,7 @@ function geolocation_googlemaps_field_widget_form(&$form, &$form_state, $field, 
       $element['help'] = array(
         '#prefix' => '<div id="geolocation-help-' . $id . '" class="geolocation-help">',
         '#suffix' => '</div>',
-        '#markup' => t('Enter an address / location in the textfield or you can also click on the map to set a marker'),
+        '#markup' => t('Enter an address / location / Google map URL in the textfield or you can also click on the map to set a marker'),
       );
       $element['googlemap'] = array(
         '#prefix' => '<div id="geolocation-map-' . $id . '" class="geolocation-map" style="width:100%;height:400px;">',
