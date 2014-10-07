@@ -518,7 +518,7 @@ function geolocation_googlemaps_field_widget_error($element, $error, $form, &$fo
 }
 
 /**
- * Implements of hook_menu().
+ * Implements hook_menu().
  */
 function geolocation_googlemaps_menu() {
   $items['admin/config/services/googlemaps'] = array(
