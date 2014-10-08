@@ -18,6 +18,7 @@ function geolocation_googlemaps_field_formatter_info() {
         'map_height' => '300px',
         'map_zoomlevel' => '7',
         'map_imageformat' => 'png8',
+        'map_link' => 0,
         'map_maptype' => 'roadmap',
         'marker_icon' => '',
       ),
@@ -87,6 +88,13 @@ function geolocation_googlemaps_field_formatter_settings_form($field, $instance,
         ),
         '#description' => t('Choose an Image Format. jpg and jpg-baseline typically provide the smallest image size, though they do so through "lossy" compression which may degrade the image. gif, png8 and png32 provide lossless compression.'),
         '#default_value' => $settings['map_imageformat'],
+      );
+
+      $element['map_link'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Create link to Google Maps'),
+        '#description' => t('Link the static map image to Google Maps.'),
+        '#default_value' => $settings['map_link'],
       );
 
       break;
@@ -237,7 +245,13 @@ function geolocation_googlemaps_field_formatter_view($entity_type, $entity, $fie
           'attributes' => array('class' => 'geolocation-googlemaps-static'),
         );
         $map_img = theme('image', $variables);
-        $element[$delta]['#markup'] = '<div>' . $map_img . '</div>';
+        if ($settings['map_link'] === 1) {
+          $map_link_query['q'] = $item[$lat_key] . ',' . $item[$lng_key];
+          $element[$delta]['#markup'] = '<div>' . l($map_img, '//maps.google.com/maps', array('query' => $map_link_query, 'external' => TRUE, 'html' => TRUE)) . '</div>';
+        }
+        else {
+          $element[$delta]['#markup'] =  '<div>' . $map_img . '</div>';
+        }
       }
       break;
 
