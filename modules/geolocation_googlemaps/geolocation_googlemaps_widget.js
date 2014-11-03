@@ -291,9 +291,11 @@
           google.maps.event.addListenerOnce(Drupal.geolocation.maps[i], 'idle', function(){
             $("#geolocation-map-" + i).closest('div.vertical-tabs').find('.vertical-tab-button a').click(function() {
               google.maps.event.trigger(Drupal.geolocation.maps[i], "resize");
+              Drupal.geolocation.maps[i].setCenter(mapOptions.center);
             });
             $("#geolocation-map-" + i).closest('fieldset.collapsible').find('a.fieldset-title').click(function() {
               google.maps.event.trigger(Drupal.geolocation.maps[i], "resize");
+              Drupal.geolocation.maps[i].setCenter(mapOptions.center);
             });
           });
 
