@@ -200,11 +200,18 @@ function geolocation_field_formatter_view($entity_type, $entity, $field, $instan
       break;
     case 'geolocation_latlng':
       foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme' => 'geolocation_latlng',
+          '#lat' => $item['lat'],
+          '#lng' => $item['lng'],
+        );
+        /*
         $element[$delta]['#markup'] = '<span itemscope="" itemtype="http://schema.org/GeoCoordinates">';
         $element[$delta]['#markup'] .= '<meta itemprop="latitude" content="' . $item['lat'] . '">';
         $element[$delta]['#markup'] .= '<meta itemprop="longitude" content="' . $item['lng'] . '">';
         $element[$delta]['#markup'] .= '<span class="geolocation-latlng">' . $item['lat'] . ', ' . $item['lng'] . '</span>';
         $element[$delta]['#markup'] .= '</span>';
+        */
       }
       break;
     case 'geolocation_latitude':
@@ -219,6 +226,21 @@ function geolocation_field_formatter_view($entity_type, $entity, $field, $instan
       break;
   }
   return $element;
+}
+
+/**
+* Implements hook_theme().
+*/
+function geolocation_theme() {
+  return array(
+    'geolocation_latlng' => array(
+      'template' => 'geolocation_latlng',
+      'variables' => array(
+        'lat' => NULL,
+        'lng' => NULL,
+      ),
+    ),
+  );
 }
 
 /**
