@@ -170,6 +170,10 @@ function geolocation_field_formatter_info() {
       'label' => t('Simple text-based formatter'),
       'field types' => array('geolocation_latlng'),
     ),
+    'geolocation_latlng' => array(
+      'label' => t('Simple microdata formatter'),
+      'field types' => array('geolocation_latlng'),
+    ),
     'geolocation_latitude' => array(
       'label' => t('Latitude text-based formatter'),
       'field types' => array('geolocation_latlng'),
@@ -192,6 +196,15 @@ function geolocation_field_formatter_view($entity_type, $entity, $field, $instan
     case 'geolocation_text':
       foreach ($items as $delta => $item) {
         $element[$delta]['#markup'] = '<p>' . t('Geolocation is @lat, @lng', array('@lat' => $item['lat'], '@lng' => $item['lng'])) . '</p>';
+      }
+      break;
+    case 'geolocation_latlng':
+      foreach ($items as $delta => $item) {
+        $element[$delta]['#markup'] = '<span itemscope="" itemtype="http://schema.org/GeoCoordinates">';
+        $element[$delta]['#markup'] .= '<meta itemprop="latitude" content="' . $item['lat'] . '">';
+        $element[$delta]['#markup'] .= '<meta itemprop="longitude" content="' . $item['lng'] . '">';
+        $element[$delta]['#markup'] .= '<span class="geolocation-latlng">' . $item['lat'] . ', ' . $item['lng'] . '</span>';
+        $element[$delta]['#markup'] .= '</span>';
       }
       break;
     case 'geolocation_latitude':
