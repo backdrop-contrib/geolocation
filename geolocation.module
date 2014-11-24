@@ -205,13 +205,6 @@ function geolocation_field_formatter_view($entity_type, $entity, $field, $instan
           '#lat' => $item['lat'],
           '#lng' => $item['lng'],
         );
-        /*
-        $element[$delta]['#markup'] = '<span itemscope="" itemtype="http://schema.org/GeoCoordinates">';
-        $element[$delta]['#markup'] .= '<meta itemprop="latitude" content="' . $item['lat'] . '">';
-        $element[$delta]['#markup'] .= '<meta itemprop="longitude" content="' . $item['lng'] . '">';
-        $element[$delta]['#markup'] .= '<span class="geolocation-latlng">' . $item['lat'] . ', ' . $item['lng'] . '</span>';
-        $element[$delta]['#markup'] .= '</span>';
-        */
       }
       break;
     case 'geolocation_latitude':
