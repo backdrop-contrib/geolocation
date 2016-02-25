@@ -144,10 +144,7 @@ function geolocation_field_validate($entity_type, $entity, $field, $instance, $l
 function geolocation_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
   foreach ($items as $delta => $item) {
     // Precalculate some goodness.
-    $item['lat_sin'] = sin(deg2rad($item['lat']));
-    $item['lat_cos'] = cos(deg2rad($item['lat']));
-    $item['lng_rad'] = deg2rad($item['lng']);
-    $items[$delta] = $item;
+    $items[$delta] = _geolocation_field_precalculate_values($item);
   }
 }
 
@@ -304,4 +301,26 @@ function geolocation_field_widget_error($element, $error, $form, &$form_state) {
       form_error($element['lng'], $error['message']);
       break;
   }
+}
+
+/**
+ * Helper function. Precalculates values for geolocation field item.
+ *
+ * @param array $item
+ *   Geolocation field item with the following keys:
+ *     - lat: (required) Latitude
+ *     - lng: (required) Longitude
+ *
+ * @return array
+ *   Geolocation field item with added precalculated values:
+ *     - lat_sin: Latitude sine
+ *     - lat_cos: Latitude cosine
+ *     - lng_rad: Radian longitude
+ */
+function _geolocation_field_precalculate_values(array $item) {
+  $item['lat_sin'] = sin(deg2rad($item['lat']));
+  $item['lat_cos'] = cos(deg2rad($item['lat']));
+  $item['lng_rad'] = deg2rad($item['lng']);
+
+  return $item;
 }

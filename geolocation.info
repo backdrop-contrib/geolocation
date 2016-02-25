@@ -3,3 +3,6 @@ name = Geolocation
 description = Provides a geolocation field.
 package = Geolocation
 core = 7.x
+
+; Migrate handlers
+files[] = migrate/destinations/geolocation.inc
