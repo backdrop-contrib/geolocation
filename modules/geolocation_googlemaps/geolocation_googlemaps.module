@@ -404,6 +404,11 @@ function geolocation_googlemaps_field_widget_form(&$form, &$form_state, $field, 
         '#suffix' => '</span>',
         '#markup' => t('Get location'),
       );
+      $element['address']['geocode-suggestions'] = array(
+        '#prefix' => '<div id="geolocation-address-geocode-suggestions-' . $id . '" class="geolocation-address-geocode-suggestions">',
+        '#suffix' => '</div>',
+        '#markup' => t('<label>Suggestions</label><div class="suggestion-options">Not found</div>'),
+      );
       $element['help'] = array(
         '#prefix' => '<div id="geolocation-help-' . $id . '" class="geolocation-help">',
         '#suffix' => '</div>',
