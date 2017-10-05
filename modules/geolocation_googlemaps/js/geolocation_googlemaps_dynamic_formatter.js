@@ -7,15 +7,15 @@
 
 (function($) {
 
-  Drupal.geolocationGooglemaps = Drupal.geolocationGooglemaps || {};
-  Drupal.geolocationGooglemaps.maps = Drupal.geolocationGooglemaps.maps || {};
-  Drupal.geolocationGooglemaps.markers = Drupal.geolocationGooglemaps.markers || {};
+  Backdrop.geolocationGooglemaps = Backdrop.geolocationGooglemaps || {};
+  Backdrop.geolocationGooglemaps.maps = Backdrop.geolocationGooglemaps.maps || {};
+  Backdrop.geolocationGooglemaps.markers = Backdrop.geolocationGooglemaps.markers || {};
 
-  Drupal.behaviors.geolocationGooglemapsDynamicFormatter = {
+  Backdrop.behaviors.geolocationGooglemapsDynamicFormatter = {
 
     attach : function(context, settings) {
 
-      var fields = Drupal.settings.geolocationGooglemaps.formatters;
+      var fields = Backdrop.settings.geolocationGooglemaps.formatters;
 
       // Work on each map
       $.each(fields, function(instance, data) {
@@ -60,11 +60,11 @@
             };
 
             // Create map
-            Drupal.geolocationGooglemaps.maps[id] = new google.maps.Map(this, mapOptions);
+            Backdrop.geolocationGooglemaps.maps[id] = new google.maps.Map(this, mapOptions);
 
             // Create and place marker
-            Drupal.geolocationGooglemaps.markers[id] = new google.maps.Marker({
-              map : Drupal.geolocationGooglemaps.maps[id],
+            Backdrop.geolocationGooglemaps.markers[id] = new google.maps.Marker({
+              map : Backdrop.geolocationGooglemaps.maps[id],
               draggable : false,
               icon : instanceSettings.marker_icon,
               position : latLng
