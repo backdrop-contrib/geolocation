@@ -405,9 +405,11 @@ function geolocation_googlemaps_field_widget_form(&$form, &$form_state, $field, 
   switch ($instance['widget']['type']) {
 
     case 'geolocation_googlemap':
+      // Wrap fields and map with a nice fieldset
+      $element['#type'] = 'fieldset';
+
       $element['address'] = array(
         '#type' => 'item',
-        '#title' => $element['#title'],
         '#prefix' => '<div id="geolocation-address-' . $id . '" class="geolocation-address">',
         '#suffix' => '</div>',
         '#required' => $instance['required'],
