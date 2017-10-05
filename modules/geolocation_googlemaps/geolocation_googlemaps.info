@@ -1,4 +1,6 @@
+type = module
 name = Geolocation Google Maps
 description = Provides Google Maps widgets and formatters for geolocation field.
 package = Geolocation
-core = 7.x
+backdrop = 1.x
+dependencies[] = geolocation
