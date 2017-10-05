@@ -37,6 +37,12 @@ At the moment Geolocation stores the following values in the database:
 The precalculated values will speed up proximity SQL look ups.
 
 
+License
+-------
+
+This project is GPL v2 software. See the LICENSE.txt file in this directory for complete text.
+
+
 Current Maintainers
 -------------------
 
