@@ -22,7 +22,7 @@ function geolocation_html5_field_formatter_info() {
 function geolocation_html5_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
 
-  drupal_add_css(drupal_get_path('module', 'geolocation_html5') . '/geolocation_html5.css', 'file');
+  backdrop_add_css(backdrop_get_path('module', 'geolocation_html5') . '/css/geolocation_html5.css', 'file');
 
   switch ($display['type']) {
 
@@ -113,9 +113,9 @@ function geolocation_html5_field_widget_form(&$form, &$form_state, $field, $inst
       );
 
       // Attach CSS and JS files via FAPI '#attached'.
-      $element['map']['#attached']['css'][] = drupal_get_path('module', 'geolocation_html5') . '/geolocation_html5.css';
+      $element['map']['#attached']['css'][] = backdrop_get_path('module', 'geolocation_html5') . '/css/geolocation_html5.css';
       $element['map']['#attached']['js'][] = array(
-        'data' => drupal_get_path('module', 'geolocation_html5') . '/geolocation_html5.js',
+        'data' => backdrop_get_path('module', 'geolocation_html5') . '/js/geolocation_html5.js',
         'type' => 'file'
       );
 

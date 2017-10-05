@@ -8,11 +8,11 @@
     return Math.log(Math.tan(latitude * Math.PI / 180) + 1 / Math.cos(latitude * Math.PI / 180));
   }
 
-  Drupal.latitudeToPx = function (latitude, topLatitude, bottomLatitude, height) {
+  Backdrop.latitudeToPx = function (latitude, topLatitude, bottomLatitude, height) {
     return (latitudeToMercator(latitude) - latitudeToMercator(bottomLatitude)) / (latitudeToMercator(topLatitude) - latitudeToMercator(bottomLatitude)) * height;
   }
 
-  Drupal.longitudeToPx = function (longitude, leftLongitude, width) {
+  Backdrop.longitudeToPx = function (longitude, leftLongitude, width) {
     return (longitude - leftLongitude + 360) / 360 % 1 * width;
   }
 
@@ -25,8 +25,8 @@
       return;
     }
 
-    var latPx = Math.round( Drupal.latitudeToPx(latitude, 78, -58, thisMap.height()) );
-    var lngPx = Math.round( Drupal.longitudeToPx(longitude, -168, thisMap.width()) );
+    var latPx = Math.round( Backdrop.latitudeToPx(latitude, 78, -58, thisMap.height()) );
+    var lngPx = Math.round( Backdrop.longitudeToPx(longitude, -168, thisMap.width()) );
 
     // Plot coords on map.
     $('.dot', thisMap).show();
@@ -68,7 +68,7 @@
     }
   }
 
-  Drupal.behaviors.GeolocationHTML5 = {
+  Backdrop.behaviors.GeolocationHTML5 = {
     attach: function(context, settings) {
       if (navigator.geolocation) {
         $('.field-type-geolocation-latlng .form-type-checkbox input:not(.geolocation-html5-processed)', context)
@@ -79,7 +79,7 @@
         .each(function () {
           $(this).addClass('geolocation-html5-processed');
           var widgetParentElement = $(this).parent().parent();
-          $('.form-type-checkbox .description', widgetParentElement).html(Drupal.t('Your location will be saved and may be shared.'));
+          $('.form-type-checkbox .description', widgetParentElement).html(Backdrop.t('Your location will be saved and may be shared.'));
           getLocation(widgetParentElement);
         });
       }
