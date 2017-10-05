@@ -1,7 +1,7 @@
 Geolocation
 ===========
 
-Port of the Drupal 7 module *Geolocation Field*.
+Port of the Drupal 7 module [*Geolocation Field*](https://www.drupal.org/project/geolocation).
 
 Geolocation provides a field type to store geographical locations as pairs of latitude and longitude (lan,lng). Geolocation fields can be used with all fieldable entities like nodes, users, comments, taxonomy terms, etc.
 
