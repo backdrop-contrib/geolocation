@@ -568,11 +568,14 @@ function geolocation_googlemaps_menu() {
   return $items;
 }
 
-function geolocation_googlemaps_admin_settings() {
-  $form['geolocation_googlemaps_api_key'] = array(
+function geolocation_googlemaps_admin_settings($form, &$form_state) {
+  $config = config('geolocation_googlemaps.settings');
+  $form['#config'] = 'geolocation_googlemaps.settings';
+
+  $form['api_key'] = array(
     '#title' => t('Your Google Simple API Access key'),
     '#type' => 'textfield',
-    '#default_value' => config_get('geolocation_googlemaps.settings', 'api_key'),
+    '#default_value' => $config->get('api_key'),
     '#size' => 50,
     '#maxlength' => 255,
     '#description' => t('Using an API key is mandatory to view Google maps. You can find more information about API keys on <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">Google Maps JavaScript API v3</a>.'),
