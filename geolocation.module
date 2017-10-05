@@ -285,7 +285,7 @@ function geolocation_field_widget_form(&$form, &$form_state, $field, $instance, 
         '#maxlength' => 30,
         '#required' => $instance['required'],
       );
-      $element['#attached']['css'][] = drupal_get_path('module', 'geolocation') . '/css/geolocation.css';
+      $element['#attached']['css'][] = backdrop_get_path('module', 'geolocation') . '/css/geolocation.css';
       break;
 
   }
