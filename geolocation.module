@@ -227,7 +227,7 @@ function geolocation_field_formatter_view($entity_type, $entity, $field, $instan
 function geolocation_theme() {
   return array(
     'geolocation_latlng' => array(
-      'template' => 'geolocation_latlng',
+      'template' => 'templates/geolocation_latlng',
       'variables' => array(
         'lat' => NULL,
         'lng' => NULL,
@@ -285,7 +285,7 @@ function geolocation_field_widget_form(&$form, &$form_state, $field, $instance, 
         '#maxlength' => 30,
         '#required' => $instance['required'],
       );
-      $element['#attached']['css'][] = drupal_get_path('module', 'geolocation') . '/geolocation.css';
+      $element['#attached']['css'][] = drupal_get_path('module', 'geolocation') . '/css/geolocation.css';
       break;
 
   }
